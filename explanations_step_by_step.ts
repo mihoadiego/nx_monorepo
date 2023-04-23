@@ -124,6 +124,25 @@ pour changer le port de mon app react, je vais dans le fichier nxegghead->apps->
 9) pour lancer un lint de notre projet: npx nx run store:lint
 
 
+
+10 ) puis j'ai fait mon premier push sur git, pour cela, j'ai du d'abord creer un repo sur github, que j'ai en loccurrence nommé nx_monorepo, 
+puis j'ai copié l'adresse url de ce repository, à  savoir https://github.com/mihoadiego/nx_monorepo.git (pour la 4eme commande ci dessous)
+		puis je suis retourné sur mon projet, et directement à la source de nxegghead, j'ai tappé:
+			git init
+			git add .
+			git commit -m'workspace with react creation'
+			git remote add origin https://github.com/mihoadiego/nx_monorepo.git
+			git push -u -f origin main
+
+			et ca m'a permis, apres connection depuis VS code au github, de push mon monorepo!
+
+
+
+
+
+
+
+
 jen suis a l'etape 6 du tuto
 
 
