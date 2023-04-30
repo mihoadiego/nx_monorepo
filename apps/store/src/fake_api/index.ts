@@ -1,4 +1,4 @@
-import { GameProps, id } from '../app/typologies';
+import { GameProps, id } from '@nxegghead/store/utils-formatters';
 
 const games: GameProps[] = [
   {

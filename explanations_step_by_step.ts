@@ -120,7 +120,7 @@ PAS A PAS:
 
 7) j'ai ensuite crée a la volée un rendu dans nxegghead->apps->store->src->app->app.tsx en typescript pour voir un rendu, en installant d'abord mui, 
 	et donc j'ai du tapper les commandes suivantes depuis le dossier nxegghead directement:
-		npm install @mui/material @mui/styled-engine-sc
+		npm install @mui/material @mui/styled-engine-sc @mui/lab @mui/icons-material 
 		npm install @emotion/react 
 		npm install @emotion/styled
 
@@ -164,5 +164,38 @@ jen suis a l'etape 7 du tuto
 										"output":"./xxxxx" 		      -> adresse pointant sur l'endroit ou les assets devraient etre copiées au moment du compile (dist)
 									  }
 									],
+
+
+10) Ajout, dans les libs, d'un nouveau dossier 'store' contenant un nouveau projet react:
+		npx nx g @nrwl/react:lib ui-shared --directory=store
+		commande lancée directement depuis le dossier source nxegghead 
+		a la question des test, j'ai choisi jest, et à la question du build, j'ai choisi none (il y avait vite, rollup ou none comme choix)							
+
+	Puis creation d'un composant header:
+		npx nx g @nrwl/react:component header --project=store-ui-shared
+
+		le chemin store-ui-shared correspond au path libs->store->ui-shared
+		et quand il m'a demandé si je voulais exporté, j'ai bien évidemment repondu oui pour que ce composant soit accessible a toute les app
+
+
+	=> du coup, ca m'a cree le fichier : nxegghead->libs->store->ui-shared->src->lib->header->header.tsx
+	   et du coup, dans le fichier nxegghead->libs/->store->ui-shared->src->index.ts, mon fichier header ci dessus est automatqieuemt exporté
+	   du coup, pour importer ce header par exemple depuis app->store, je n'ai qu'a ecrire import { Header } from '@nxegghead/store/ui-shared'; 
+
+
+11) creation d'un dossier dans les libs pour y mettre nos interfaces et typages typescript, (précisément dans le dossier store des libs)	   
+		npx nx g @nrwl/workspace:lib utils-formatters --directory=store
+		ca a cree un dossier nxegghead->libs->store->utils-formatters dans lequel je retrouve un src->lib->store-utils-formatters.ts
+		j'ai ainsi pu mettre tous les typages dans ce dossier, les exporter, et les importer dans mon apps->store->src->app->app.tsx notamment!
+
+
+12) voir les dépendances dans tout mon monorepo: 
+		npx nx dep-graph 
+		
+
+13) creation des routes React
+		/home/hoareau/workspace/nxegghead/apps/store/src/main.tsx reste l'entrée primaire de notre app store
+		/home/hoareau/workspace/nxegghead/apps/store/src/app/app.tsx est l'endroit ou j'ai cree les routes via Router/Route et useParams/useNavigate							
+
 
 */
